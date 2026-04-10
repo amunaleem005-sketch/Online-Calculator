@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Calculator</title>
+    <style>
+        body {
+            background-color: #845e84;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heading {
+            color: #561b51;
+            margin-bottom: 500px;
+            margin-right: 10px;
+            margin-inline:-400px;
+            font-family: fantasy;
+        }
+
+        .fact {
+            color: #561b51;
+            
+            margin-top: -360px;
+            margin-left: -160px;
+            margin-inline: initial;
+
+        }
+
+        #input1,
+        #input2 {
+            grid-column: span 3;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            text-align: center;
+        }
+
+        #result {
+            grid-column: span 3;
+            height: 60px;
+            background: #e2cece;
+            border-radius: 15px;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 20px;
+        }
+
+        /* creating a box */
+        .box {
+            width: 320px;
+            background-color: rgb(120, 53, 85);
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-left: 190px;
+
+        }
+
+        /* giving an area for the user to enter a number */
+
+
+        /* arranging all the buttons */
+        button {
+            height: 50px;
+            border-radius: 15px;
+            border: none;
+            font-size: 18px;
+        }
+
+
+        /* adding add,multiply operators */
+        button.btnadd {
+            background-color: #f9a825;
+            color: white;
+        }
+
+        button.btnsub {
+            background-color: #f9a825;
+            color: white;
+        }
+
+        button.btnmul {
+            background-color: #f9a825;
+            color: white;
+        }
+
+        button.btndiv {
+            background-color: #f9a825;
+            color: white;
+        }
+
+        button.btnmod {
+            background-color: #f9a825;
+            color: white;
+        }
+
+        button.clear {
+            background-color: #f9a825;
+            color: white;
+        }
+
+
+        /* clear value */
+        button.btnclr {
+            background-color: #8e697e;
+            color: white;
+        }
+
+        /* equal button */
+        button.btnequal {
+            background-color: #b587ad;
+            color: white;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="heading">Welcome to the Online Calculator</h1>
+    <h2 class="fact"> Calculate your way out</h2>
+    <div class="buttons">
+        <div class="box">
+
+            <input id="input1" type="number" placeholder="First number">
+            <input id="input2" type="number" placeholder="Second number">
+            <div id="result">Your Output</div>
+
+            <button class="clear" onclick="remove()">x</button>
+            <button class="btnadd" onclick="addition()">+</button>
+            <button class="btnsub" onclick="subtract()">-</button>
+            <button class="btnmul" onclick="multiply()">*</button>
+            <button class="btndiv" onclick="divide()">/</button>
+            <button class="btnmod" onclick="modulus()">%</button>
+            <button class="btnclr" onclick="clearInputs()">clr</button>
+            <button class="btnequal" onclick="equal()">=</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>0</button>
+        </div>
+    </div>
+    <script>
+        function addition() {
+            let num1 = document.getElementById("input1").value;
+            let num2 = document.getElementById("input2").value;
+            if (num1 === "" || num2 === "") {
+                document.getElementById("result").innerHTML = "Enter both numbers";
+                return;
+            }
+
+            document.getElementById("result").innerHTML = Number(num1) + Number(num2);
+        }
+
+        function subtract() {
+            let num1 = document.getElementById("input1").value;
+            let num2 = document.getElementById("input2").value;
+
+            if (num1 === "", num2 === "") {
+                document.getElementById("result").innerHTML = "Enter both numbers";
+                return;
+            }
+
+            document.getElementById("result").innerHTML = Number(num1) - Number(num2);
+        }
+
+        function multiply() {
+            let num1 = document.getElementById("input1").value;
+            let num2 = document.getElementById("input2").value;
+
+            if (num1 === "", num2 === "") {
+                document.getElementById("result").innerHTML = "Enter both numbers";
+                return;
+            }
+
+            document.getElementById("result").innerHTML = Number(num1) * Number(num2);
+        }
+
+        function divide() {
+            let num1 = document.getElementById("input1").value;
+            let num2 = document.getElementById("input2").value;
+
+            if (num1 === "", num2 === "") {
+                document.getElementById("result").innerHTML = "Enter both numbers";
+                return;
+            }
+
+            if (Number(num2) === 0) {
+                document.getElementById("result").innerHTML = "Cannot divide by zero";
+            } else {
+                document.getElementById("result").innerHTML = Number(num1) / Number(num2);
+            }
+        }
+
+        function modulus() {
+            let num1 = document.getElementById("input1").value;
+            let num2 = document.getElementById("input2").value;
+
+            if (num1 === "", num2 === "") {
+                document.getElementById("result").innerHTML = "Enter both numbers";
+                return;
+            }
+
+            document.getElementById("result").innerHTML = Number(num1) % Number(num2);
+        }
+        function clearInputs() {
+            document.getElementById("input1").value = "";
+            document.getElementById("input2").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+
+        function remove() {
+            document.getElementById("result").innerHTML = "";
+        }
+
+        function equal() {
+            document.getElementById("result").innerHTML = "Press an operator";
+        }
+    </script>
+</body>
+
+</html>
